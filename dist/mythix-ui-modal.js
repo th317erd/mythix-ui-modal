@@ -84,9 +84,3 @@ export class MythixUIModal extends MythixUIComponent {
 }
 
 MythixUIModal.register();
-
-export class MythixUIAlertModal extends MythixUIComponent {
-  static tagName = 'mythix-alert-modal';
-}
-
-MythixUIAlertModal.register();

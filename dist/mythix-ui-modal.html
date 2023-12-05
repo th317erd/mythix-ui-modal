@@ -107,11 +107,4 @@
   </dialog>
 </template>
 
-<template data-for="mythix-alert-modal">
-  <mythix-modal title="{{attributes.title || $$.i18n('Mythix.MythixModal.Alert.header.caption', 'Alert')}}">
-    <button slot="footer">{{$$.i18n('Mythix.MythixModal.Alert.confirmButton.caption', 'Okay')}}</button>
-    <slot></slot>
-  </mythix-modal>
-</template>
-
 <script type="module" src="./mythix-ui-modal.js"></script>
