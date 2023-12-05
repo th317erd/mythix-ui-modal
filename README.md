@@ -1,2 +1,4 @@
 # mythix-ui-modal
-Modal system for Mythix UI
+
+A Mythix UI component...
+

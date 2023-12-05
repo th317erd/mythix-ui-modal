@@ -1,0 +1,117 @@
+<!-- Component style in "document" scope -->
+<style data-for="mythix-modal">
+  mythix-modal {
+    display: flex;
+    position: relative;
+  }
+</style>
+
+<!-- Component style in "shadow" scope -->
+<template data-for="mythix-modal">
+  <style>
+    dialog[open],dialog > * {
+      position: relative;
+      display: flex;
+      box-sizing: border-box;
+    }
+
+    dialog > * {
+      padding: var(--theme-padding, 1rem);
+    }
+
+    dialog[open] {
+      flex-direction: column;
+      padding: 0;
+      border-color: var(--theme-primary-border-color, #333);
+      align-items: stretch;
+      border-style: var(--theme-border-style, solid);
+      border-color: var(--theme-primary-border-color, rgba(128, 128, 128, 0.25));
+      border-width: var(--theme-border-width, 0.125rem);
+      border-radius: var(--theme-border-radius, 0);
+      overflow: hidden;
+    }
+
+    dialog::backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    dialog > header {
+      flex-direction: row;
+      flex-shrink: 0;
+      flex-grow: 0;
+      user-select: none;
+      border-style: var(--theme-border-style, solid);
+      border-color: var(--theme-primary-border-color, rgba(128, 128, 128, 0.25));
+      border-width: 0;
+      border-radius: 0;
+      border-bottom-width: var(--theme-border-width, 0.125rem);
+    }
+
+    dialog > header .caption-container {
+      display: flex;
+      flex-grow: 1;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+    }
+
+    dialog > header .header-buttons-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    dialog > main {
+      flex-direction: column;
+      flex-shrink: 0;
+      flex-grow: 0;
+      user-select: none;
+      padding-top: 0;
+      padding-bottom: 0;
+      overflow: auto;
+    }
+
+    dialog > footer {
+      flex-direction: row;
+      flex-shrink: 0;
+      flex-grow: 0;
+      user-select: none;
+      align-items: center;
+      justify-content: flex-end;
+      border-style: var(--theme-border-style, solid);
+      border-color: var(--theme-primary-border-color, rgba(128, 128, 128, 0.25));
+      border-width: 0;
+      border-radius: 0;
+      border-top-width: var(--theme-border-width, 0.125rem);
+    }
+  </style>
+
+  <dialog class="root-container" part="dialog root">
+    <header part="header">
+      <div class="caption-container" part="caption-container">
+        <slot onslotchange="onHeaderCaptionSlotChange" name="caption">
+          <span part="caption">{{attributes.title || $$.i18n('Mythix.MythixModal.header.caption', 'Dialog')}}</span>
+        </slot>
+      </div>
+      <div class="header-buttons-container">
+        <slot onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
+      </div>
+    </header>
+    <main part="main">
+      <slot onslotchange="onMainSlotChange"></slot>
+    </main>
+    <footer part="footer">
+      <slot onslotchange="onFooterSlotChange" name="footer"></slot>
+    </footer>
+  </dialog>
+</template>
+
+<template data-for="mythix-alert-modal">
+  <mythix-modal title="{{attributes.title || $$.i18n('Mythix.MythixModal.Alert.header.caption', 'Alert')}}">
+    <button slot="footer">{{$$.i18n('Mythix.MythixModal.Alert.confirmButton.caption', 'Okay')}}</button>
+    <slot></slot>
+  </mythix-modal>
+</template>
+
+<script type="module" src="./mythix-ui-modal.js"></script>

@@ -26,12 +26,6 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
-
 # node-waf configuration
 .lock-wscript
 
@@ -39,11 +33,7 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
 jspm_packages/
-
-# Snowpack dependency directory (https://snowpack.dev/)
-web_modules/
 
 # TypeScript cache
 *.tsbuildinfo
@@ -79,11 +69,21 @@ web_modules/
 .env.production.local
 .env.local
 
+# parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
+
+# Gatsby files
 .cache/
+# Comment in the public line in if your project uses Gatsby and not Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# public
+
 .temp
 .cache
+
+# Docusaurus cache and generated files
+.docusaurus
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
@@ -94,3 +94,7 @@ web_modules/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+.git
+.git*
+**/.git/*
+**/.git*
