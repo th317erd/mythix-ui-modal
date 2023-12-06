@@ -1,6 +1,6 @@
 {
   "name": "mythix-ui-modal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modal system for Mythix UI",
   "main": "dist/mythix-ui-modal.js",
   "type": "module",
