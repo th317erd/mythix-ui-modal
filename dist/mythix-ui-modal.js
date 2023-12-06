@@ -7,6 +7,17 @@ export class MythixUIModal extends MythixUIComponent {
     return this.$('dialog').first()[0];
   }
 
+  get returnValue() {
+    if (!this.$dialog)
+      return null;
+
+    return this.$dialog.returnValue;
+  }
+
+  set returnValue(newValue) {
+    this.$dialog.returnValue = newValue;
+  }
+
   get open() {
     return this.hasAttribute('open');
   }
@@ -18,7 +29,9 @@ export class MythixUIModal extends MythixUIComponent {
       this.removeAttribute('open');
   }
 
-  returnValue = null;
+  setReturnValue(value) {
+    this.returnValue = value;
+  }
 
   publishContext() {
     return {};
@@ -33,7 +46,7 @@ export class MythixUIModal extends MythixUIComponent {
   }
 
   onHeaderButtonsSlotChange() {
-    this.$('button')
+    this.$({ slotted: true }, 'button')
       .slot('header-buttons')
       .off('click', this.onHeaderButtonClick)
       .on('click', this.onHeaderButtonClick);
@@ -48,7 +61,7 @@ export class MythixUIModal extends MythixUIComponent {
   }
 
   onFooterSlotChange() {
-    this.$('button')
+    this.$({ slotted: true }, 'button')
       .slot('footer')
       .off('click', this.onFooterButtonClick)
       .on('click', this.onFooterButtonClick);
@@ -73,6 +86,14 @@ export class MythixUIModal extends MythixUIComponent {
   }
 
   mounted() {
+    this.$dialog.addEventListener('close', () => {
+      this.dispatchEvent(new Event('close'));
+    });
+
+    this.onHeaderButtonsSlotChange();
+    this.onMainSlotChange();
+    this.onFooterSlotChange();
+
     if (this.open)
       this.show();
 
@@ -84,3 +105,15 @@ export class MythixUIModal extends MythixUIComponent {
 }
 
 MythixUIModal.register();
+
+export class MythixUIAlertModal extends MythixUIModal {
+  static tagName = 'mythix-alert-modal';
+}
+
+MythixUIAlertModal.register();
+
+export class MythixUIPromptModal extends MythixUIModal {
+  static tagName = 'mythix-prompt-modal';
+}
+
+MythixUIPromptModal.register();

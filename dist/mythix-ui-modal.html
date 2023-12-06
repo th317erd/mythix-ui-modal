@@ -6,8 +6,8 @@
   }
 </style>
 
-<!-- Component style in "shadow" scope -->
-<template data-for="mythix-modal">
+<!-- Template template (this will be inclued in all other templates) -->
+<template data-for="*|">
   <style>
     dialog[open],dialog > * {
       position: relative;
@@ -84,14 +84,18 @@
       border-width: 0;
       border-radius: 0;
       border-top-width: var(--theme-border-width, 0.125rem);
+      gap: 0.5em;
     }
   </style>
+</template>
 
+<!-- Component style in "shadow" scope -->
+<template data-for="mythix-modal">
   <dialog class="root-container" part="dialog root">
     <header part="header">
       <div class="caption-container" part="caption-container">
         <slot onslotchange="onHeaderCaptionSlotChange" name="caption">
-          <span part="caption">{{attributes.title || $$.i18n('Mythix.MythixModal.header.caption', 'Dialog')}}</span>
+          <span part="caption">@@attributes.title || $$.i18n('Mythix.MythixModal.header.caption', 'Dialog')@@</span>
         </slot>
       </div>
       <div class="header-buttons-container">
@@ -103,6 +107,53 @@
     </main>
     <footer part="footer">
       <slot onslotchange="onFooterSlotChange" name="footer"></slot>
+    </footer>
+  </dialog>
+</template>
+
+<template data-for="mythix-alert-modal">
+  <dialog class="root-container" part="dialog root">
+    <header part="header">
+      <div class="caption-container" part="caption-container">
+        <slot onslotchange="onHeaderCaptionSlotChange" name="caption">
+          <span part="caption">@@attributes.title || $$.i18n('Mythix.MythixModal.Alert.header.caption', 'Alert')@@</span>
+        </slot>
+      </div>
+      <div class="header-buttons-container">
+        <slot onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
+      </div>
+    </header>
+    <main part="main">
+      <slot onslotchange="onMainSlotChange"></slot>
+    </main>
+    <footer part="footer">
+      <slot onslotchange="onFooterSlotChange" name="footer">
+        <button part="confirmButton" onclick="this.setReturnValue(true)">@@$$.i18n('Mythix.MythixModal.Alert.confirmButton.caption', 'Okay')@@</button>
+      </slot>
+    </footer>
+  </dialog>
+</template>
+
+<template data-for="mythix-prompt-modal">
+  <dialog class="root-container" part="dialog root">
+    <header part="header">
+      <div class="caption-container" part="caption-container">
+        <slot onslotchange="onHeaderCaptionSlotChange" name="caption">
+          <span part="caption">@@attributes.title || $$.i18n('Mythix.MythixModal.Prompt.header.caption', 'Prompt')@@</span>
+        </slot>
+      </div>
+      <div class="header-buttons-container">
+        <slot onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
+      </div>
+    </header>
+    <main part="main">
+      <slot onslotchange="onMainSlotChange"></slot>
+    </main>
+    <footer part="footer">
+      <slot onslotchange="onFooterSlotChange" name="footer">
+        <button part="denyButton" onclick="this.setReturnValue(false)">@@$$.i18n('Mythix.MythixModal.Prompt.denyButton.caption', 'No')@@</button>
+        <button part="confirmButton" onclick="this.setReturnValue(true)">@@$$.i18n('Mythix.MythixModal.Prompt.confirmButton.caption', 'Yes')@@</button>
+      </slot>
     </footer>
   </dialog>
 </template>
