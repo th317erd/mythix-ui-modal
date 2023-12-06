@@ -125,3 +125,4 @@ web_modules/
 .eslintrc.cjs
 playground
 webpack*
+.ignore
