@@ -1,0 +1,28 @@
+{
+  "Mythix": {
+    "MythixModal": {
+      "header": {
+        "caption": "Diálogo"
+      },
+      "Alert": {
+        "header": {
+          "caption": "Alerta"
+        },
+        "confirmButton": {
+          "caption": "Está Bien"
+        }
+      },
+      "Prompt": {
+        "header": {
+          "caption": "Inmediato"
+        },
+        "confirmButton": {
+          "caption": "Sí"
+        },
+        "denyButton": {
+          "caption": "No"
+        }
+      }
+    }
+  }
+}
