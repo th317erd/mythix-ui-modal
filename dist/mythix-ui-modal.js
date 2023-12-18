@@ -4,7 +4,7 @@ export class MythixUIModal extends MythixUIComponent {
   static tagName = 'mythix-modal';
 
   get $dialog() {
-    return this.$('dialog').first()[0];
+    return this.select('dialog').first()[0];
   }
 
   get returnValue() {
@@ -46,7 +46,7 @@ export class MythixUIModal extends MythixUIComponent {
   }
 
   onHeaderButtonsSlotChange() {
-    this.$({ slotted: true }, 'button')
+    this.select({ slotted: true }, 'button')
       .slot('header-buttons')
       .off('click', this.onHeaderButtonClick)
       .on('click', this.onHeaderButtonClick);
@@ -61,7 +61,7 @@ export class MythixUIModal extends MythixUIComponent {
   }
 
   onFooterSlotChange() {
-    this.$({ slotted: true }, 'button')
+    this.select({ slotted: true }, 'button')
       .slot('footer')
       .off('click', this.onFooterButtonClick)
       .on('click', this.onFooterButtonClick);
