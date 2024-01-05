@@ -33,10 +33,6 @@ export class MythixUIModal extends MythixUIComponent {
     this.returnValue = value;
   }
 
-  publishContext() {
-    return {};
-  }
-
   onHeaderCaptionSlotChange() {
   }
 
