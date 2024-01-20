@@ -1,4 +1,4 @@
-import { MythixUIComponent } from 'mythix-ui-core';
+import { MythixUIComponent } from '@cdn/mythix-ui-core@1';
 
 export class MythixUIModal extends MythixUIComponent {
   static tagName = 'mythix-modal';
@@ -82,6 +82,8 @@ export class MythixUIModal extends MythixUIComponent {
   }
 
   mounted() {
+    super.mounted();
+
     this.$dialog.addEventListener('close', () => {
       this.dispatchEvent(new Event('close'));
     });
