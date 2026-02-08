@@ -94,19 +94,19 @@
   <dialog class="root-container" part="dialog root">
     <header part="header">
       <div class="caption-container" part="caption-container">
-        <slot onslotchange="onHeaderCaptionSlotChange" name="caption">
+        <slot data-event-onslotchange="onHeaderCaptionSlotChange" name="caption">
           <span part="caption">@@attributes.title || $$.i18n('Mythix.MythixModal.header.caption', 'Dialog')@@</span>
         </slot>
       </div>
       <div class="header-buttons-container">
-        <slot onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
+        <slot data-event-onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
       </div>
     </header>
     <main part="main">
-      <slot onslotchange="onMainSlotChange"></slot>
+      <slot data-event-onslotchange="onMainSlotChange"></slot>
     </main>
     <footer part="footer">
-      <slot onslotchange="onFooterSlotChange" name="footer"></slot>
+      <slot data-event-onslotchange="onFooterSlotChange" name="footer"></slot>
     </footer>
   </dialog>
 </template>
@@ -115,20 +115,20 @@
   <dialog class="root-container" part="dialog root">
     <header part="header">
       <div class="caption-container" part="caption-container">
-        <slot onslotchange="onHeaderCaptionSlotChange" name="caption">
+        <slot data-event-onslotchange="onHeaderCaptionSlotChange" name="caption">
           <span part="caption">@@attributes.title || $$.i18n('Mythix.MythixModal.Alert.header.caption', 'Alert')@@</span>
         </slot>
       </div>
       <div class="header-buttons-container">
-        <slot onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
+        <slot data-event-onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
       </div>
     </header>
     <main part="main">
-      <slot onslotchange="onMainSlotChange"></slot>
+      <slot data-event-onslotchange="onMainSlotChange"></slot>
     </main>
     <footer part="footer">
-      <slot onslotchange="onFooterSlotChange" name="footer">
-        <button part="confirmButton" onclick="this.setReturnValue(true)">@@$$.i18n('Mythix.MythixModal.Alert.confirmButton.caption', 'Okay')@@</button>
+      <slot data-event-onslotchange="onFooterSlotChange" name="footer">
+        <button part="confirmButton" data-event-onclick="this.setReturnValue(true)">@@$$.i18n('Mythix.MythixModal.Alert.confirmButton.caption', 'Okay')@@</button>
       </slot>
     </footer>
   </dialog>
@@ -138,21 +138,21 @@
   <dialog class="root-container" part="dialog root">
     <header part="header">
       <div class="caption-container" part="caption-container">
-        <slot onslotchange="onHeaderCaptionSlotChange" name="caption">
+        <slot data-event-onslotchange="onHeaderCaptionSlotChange" name="caption">
           <span part="caption">@@attributes.title || $$.i18n('Mythix.MythixModal.Prompt.header.caption', 'Prompt')@@</span>
         </slot>
       </div>
       <div class="header-buttons-container">
-        <slot onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
+        <slot data-event-onslotchange="onHeaderButtonsSlotChange" name="header-buttons"></slot>
       </div>
     </header>
     <main part="main">
-      <slot onslotchange="onMainSlotChange"></slot>
+      <slot data-event-onslotchange="onMainSlotChange"></slot>
     </main>
     <footer part="footer">
-      <slot onslotchange="onFooterSlotChange" name="footer">
-        <button part="denyButton" onclick="this.setReturnValue(false)">@@$$.i18n('Mythix.MythixModal.Prompt.denyButton.caption', 'No')@@</button>
-        <button part="confirmButton" onclick="this.setReturnValue(true)">@@$$.i18n('Mythix.MythixModal.Prompt.confirmButton.caption', 'Yes')@@</button>
+      <slot data-event-onslotchange="onFooterSlotChange" name="footer">
+        <button part="denyButton" data-event-onclick="this.setReturnValue(false)">@@$$.i18n('Mythix.MythixModal.Prompt.denyButton.caption', 'No')@@</button>
+        <button part="confirmButton" data-event-onclick="this.setReturnValue(true)">@@$$.i18n('Mythix.MythixModal.Prompt.confirmButton.caption', 'Yes')@@</button>
       </slot>
     </footer>
   </dialog>
